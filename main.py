@@ -9,6 +9,7 @@ def analise_lexica(codigo):
     elementos = []
     tipo = []
     texto = ''
+    tabela_simbolos = dict()
 
     i = 0
     while i < len(codigo):
@@ -46,15 +47,20 @@ def analise_lexica(codigo):
                 else:
                     i = j - 2
                     break
-            if texto in PALAVRAS_RESERVADAS:
-                tipo.append(texto)
-            else:
-                tipo.append('ident')
 
             if texto.find(' ') >= 0:
                 texto = texto[:texto.find(' ')]
             if texto.find('[') >= 0:
                 texto = texto[:texto.find('[')]
+
+            if texto in PALAVRAS_RESERVADAS:
+                tipo.append(texto)
+            else:
+                tipo.append('ident')
+                if texto not in tabela_simbolos.keys():
+                    tabela_simbolos[texto] = 1
+                else:
+                    tabela_simbolos[texto] += 1
 
             elementos.append(texto)
             i = j
@@ -70,7 +76,7 @@ def analise_lexica(codigo):
             i += 1
         texto = ''
 
-    tabela_simbolos(codigo, tipo, elementos)
+    imprime_tabela_simbolos(tabela_simbolos)
 
     return tipo, elementos
 
@@ -104,12 +110,7 @@ def analise_sintaxica(entrada):
         print('O valor da entrada que deu problema é: ' + entrada[i])
         return False
 
-def tabela_simbolos(codigo, tipo, elementos):
-    tabela = dict()
-    for i in range(len(tipo)):
-        if tipo[i] == 'ident' and elementos[i] not in tabela.keys():
-            tabela[elementos[i]] = codigo.count(elementos[i])
-
+def imprime_tabela_simbolos(tabela):
     print('Tabela de Símbolos:')
     for k in tabela.keys():
         print('O identificador ' + k + ' aparece ' + str(tabela[k]) + ' vez(s) no código')
