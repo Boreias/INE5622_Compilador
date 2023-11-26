@@ -1,0 +1,10 @@
+def principal ()
+{
+int C ;
+int D ;
+int R ;
+C = 4;
+D = 5;
+R = exec func1 (C , D );
+return ;
+}

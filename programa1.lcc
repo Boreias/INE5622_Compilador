@@ -1,0 +1,113 @@
+def soma ( int A , int B , int C )
+{
+    int resultado ;
+    resultado = A + B ;
+    resultado = resultado + C ;
+    return ;
+}
+
+def subtracao ( int A , int B )
+{
+    int resultado ;
+    resultado = A - B ;
+    return ;
+}
+
+def multiplicacao ( int A , int B )
+{
+    int resultado ;
+    resultado = A * B ;
+    return ;
+}
+
+def divisao ( int A , int B )
+{
+    float resultado ;
+    resultado = A / B ;
+    return ;
+}
+
+def max ( float A , float B )
+{
+    float maior ;
+    if ( A > B )
+    {
+        maior = A ;
+    }
+    else
+    {
+        maior = B ;
+    }
+    return ;
+}
+
+def calcula_frequencia ( int dias_letivos , int frequencia )
+{
+    float frequencia_final ;
+    float auxiliar ;
+    int porcentagem ;
+    porcentagem = 100 ;
+    auxiliar = exec multiplicacao( frequencia , porcentagem ) ;
+    frequencia_final = exec divisao ( auxiliar , dias_letivos ) ;
+    return ;
+}
+
+def main ( int primeira_nota , int segunda_nota , int terceira_nota , int frequencia )
+{
+    int dias_de_aula ;
+    int quantidade_feriados ;
+    dias_de_aula = 38 ;
+    quantidade_feriados = 4 ;
+    int dias_letivos ;
+    dias_letivos = exec subtracao ( dias_de_aula , quantidade_feriados ) ;
+    float frequencia_final ;
+    frequencia_final = exec calcula_frequencia ( dias_letivos , frequencia ) ;
+    int primeira_nota_ponderada ;
+    int segunda_nota_ponderada ;
+    int terceira_nota_ponderada ;
+    int peso_primeira_prova ;
+    int peso_segunda_prova ;
+    int peso_terceira_prova ;
+    peso_primeira_prova = 1 ;
+    peso_segunda_prova = 2 ;
+    peso_terceira_prova = 3 ;
+    primeira_nota_ponderada = exec multiplicacao ( primeira_nota , peso_primeira_prova ) ;
+    segunda_nota_ponderada = exec multiplicacao ( segunda_nota , peso_segunda_prova ) ;
+    terceira_nota_ponderada = exec multiplicacao ( terceira_nota , peso_terceira_prova ) ;
+    int soma_notas_ponderadas ;
+    int soma_notas ;
+    soma_notas_ponderadas = exec soma ( primeira_nota_ponderada , segunda_nota_ponderada , terceira_nota_ponderada) ;
+    soma_notas = exec soma ( primeira_nota , segunda_nota , terceira_nota) ;
+    float media_ponderada ;
+    float media ;
+    int quantidade_avaliacoes ;
+    int pesos_avaliacoes ;
+    quantidade_avaliacoes = 3 ;
+    pesos_avaliacoes = 6 ;
+    media_aritmetica = exec divisao ( soma_notas , quantidade_avaliacoes ) ;
+    media_ponderada = exec divisao ( soma_notas_ponderadas , pesos_avaliacoes ) ;
+    float nota_final ;
+    nota_final = exec max ( media_ponderada , media_aritmetica ) ;
+    if ( frequencia_final >= 70 )
+    {
+        if ( nota_final >= 6 )
+        {
+            print "Aprovado" ;
+        }
+        else
+        {
+            if ( nota_final >= 3 )
+            {
+                print "Em recuperação" ;
+            }
+            else
+            {
+                print "Reprovado por nota" ;
+            }
+        }
+    }
+    else
+    {
+        print "Reprovado por frequência" ;
+    }
+}

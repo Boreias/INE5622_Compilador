@@ -1,0 +1,102 @@
+def fatorial ( int numero )
+{
+    int resultado ;
+    int contador ;
+    resultado = 1 ;
+    for ( contador = 1 ; contador <= numero ; contador = contador + 1 )
+    {
+        resultado = resultado * contador ;
+    }
+    return ;
+}
+
+def fibonacci ( int numero )
+{
+    int a ;
+    int b ;
+    int proximo ;
+    int i ;
+    a = 0 ;
+    b = 1 ;
+    for ( i = 1 ; i <= numero ; i = i + 1 )
+    {
+        proximo = a + b ;
+        a = b ;
+        b = proximo ;
+    }
+    return ;
+}
+
+def ehParOuImpar ( int numero )
+{
+    int resultado ;
+    resultado = numero % 2 ;
+    if ( resultado == 0 )
+    {
+        print "O número é par" ;
+    }
+    else
+    {
+        print "O número é impar" ;
+    }
+}
+
+def ehPrimo ( int numero )
+{
+    int i ;
+    int contador ;
+    contador = 0 ;
+    for ( i = 1 ; i <= numero ; i = i + 1 )
+    {
+        if ( numero % i == 0 )
+        {
+            contador = contador + 1 ;
+        }
+    }
+    if ( contador == 2 )
+    {
+        return ;
+    }
+    else
+    {
+        return ;
+    }
+}
+
+def numeroPosotivoOuNegativo ( int numero )
+{
+    if ( numero >= 0 )
+    {
+        print "O número é positivo" ;
+    }
+    else
+    {
+        print "O número é negativo" ;
+    }
+}
+
+def numeroDivisorDe ( int numero , int divisor )
+{
+    int resultado ;
+    resultado = numero % divisor ;
+    if ( resultado == 0 )
+    {
+        print "O número informado é divisor do segundo valor passado" ;
+    }
+    else
+    {
+        print "O número informado NÃO é divisor do segundo valor passado" ;
+    }
+}
+
+def direfencaEntreValores ( int primeiroValor , int segundoValor )
+{
+    int resultado ;
+    resultado = primeiroValor - segundoValor ;
+    return ;
+}
+
+def help ()
+{
+    print "Biblioteca de operações matemáticas simples, basta utilizar algum dos métodos listados" ;
+}

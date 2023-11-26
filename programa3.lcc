@@ -1,0 +1,128 @@
+def imprimeTabuleiro ( string arrayDeValores )
+{
+    int i ;
+    int j ;
+    int k ;
+    for ( i = 0 ; i < 3 ; i = i + 1 )
+    {
+        for ( j = 0 ; j < 3 ; j = j + 1 )
+        {
+            k = i + j ;
+            print arrayDeValores[k] ;
+        }
+        print "\n" ;
+    }
+}
+
+def identificaJogador ( int turno )
+{
+    int jogador ;
+    jogador = turno % 2 ;
+    return ;
+}
+
+def informaVez ( int jogador )
+{
+    if ( jogador == 0 )
+    {
+        print "É a vez do primeiro jogador" ;
+    }
+    else
+    {
+        print "É a vez do segundo jogador" ;
+    }
+}
+
+def identificaSimbolo ( int jogador )
+{
+    string simbolo ;
+    if ( jogador == 0 )
+    {
+        simbolo = "X" ;
+    }
+    else
+    {
+        simbolo = "O" ;
+    }
+    return ;
+}
+
+def posicionaSimbolo ( string arrayDeValores , int linha , int coluna , int jogador )
+{
+    int posicao ;
+    string simbolo ;
+    string tabuleiro ;
+    posicao = linha + coluna ;
+    simbolo = exec identificaSimbolo ( jogador ) ;
+    arrayDeValores[posicao] = simbolo ;
+    tabuleiro = exec imprimeTabuleiro ( arrayDeValores ) ;
+    return ;
+}
+
+def identificaPosicoes ( string arrayDeValores , string posicoesJogador , string simbolo )
+{
+    int posicaoArrayJogador ;
+    posicaoArrayJogador = 0 ;
+    int i ;
+    for ( i = 0 ; i < 6 ; i = i + 1 )
+    {
+        if ( arrayDeValores[i] == simbolo )
+        {
+            posicoesJogador[posicaoArrayJogador] = i ;
+        }
+        if ( arrayDeValores[i] == simbolo )
+        {
+            posicaoArrayJogador = posicaoArrayJogador + 1 ;
+        }
+    }
+    return ;
+}
+
+def identificaVencedor ( string vencedor , string arrayDeValores )
+{
+    string posicoesJogadorUm[3] ;
+    string simboloJogadorUm ;
+    simboloJogadorUm = "X" ;
+    posicoesJogadorUm = exec identificaPosicoes ( arrayDeValores , posicoesJogadorUm , simboloJogadorUm ) ;
+    string posicoesJogadorDois[3] ;
+    string simboloJogadorDois ;
+    simboloJogadorDois = "O" ;
+    posicoesJogadorDois = exec identificaPosicoes ( arrayDeValores , posicoesJogadorDois , simboloJogadorDois ) ;
+}
+
+def main ()
+{
+    print "Bem vindo ao jogo da velha" ;
+    string arrayDeValores[6] ;
+    int i ;
+    for ( i = 0 ; i < 6 ; i = i + 1 )
+    {
+        arrayDeValores[i] = "-" ;
+    }
+    string tabuleiro ;
+    tabuleiro = exec imprimeTabuleiro ( arrayDeValores ) ;
+    int turno ;
+    string vencedor ;
+    vencedor = "" ;
+    for ( turno = 0 ; turno < 6 ; turno = turno + 1 )
+    {
+        int jogador ;
+        jogador = exec identificaJogador ( turno ) ;
+        int vez ;
+        vez = exec informaVez ( jogador ) ;
+        int linha ;
+        int coluna ;
+        print "Escolha uma posição não ocupada" ;
+        string simbolo ;
+        simbolo = exec posicionaSimbolo ( arrayDeValores , linha , coluna , jogador ) ;
+        vencedor = exec identificaVencedor ( vencedor , arrayDeValores ) ;
+        if ( vencedor != "" )
+        {
+            print vencedor ;
+        }
+        if ( vencedor != "" )
+        {
+            break ;
+        }
+    }
+}
